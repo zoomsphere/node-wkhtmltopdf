@@ -48,7 +48,7 @@ function wkhtmltopdf(input, options, callback) {
     Array.prototype.splice.apply(keys, spliceArgs);
   }
 
-  var args = [wkhtmltopdf.command];
+  var args = [wkhtmltopdf.preCommand, wkhtmltopdf.command];
   if (!options.debug) {
     args.push('--quiet');
   }
@@ -199,6 +199,7 @@ function wkhtmltopdf(input, options, callback) {
   return stream;
 }
 
+wkhtmltopdf.preCommand = 'xvfb-run';
 wkhtmltopdf.command = 'wkhtmltopdf';
 wkhtmltopdf.shell = '/bin/bash';
 module.exports = wkhtmltopdf;
